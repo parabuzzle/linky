@@ -1,0 +1,13 @@
+<%= simple_form_for link do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :short_name, label: 'Short Url', placeholder: "google" %>
+      <%= f.input :url, type: :url, label: 'Url to direct to', placeholder: "http://www.google.com" %>
+      <%= f.input :params_url, type: :url, label: 'Url to use when params are passed', placeholder: "http://www.google.com/?q=" %>
+      <%= f.button :submit %>
+    </div>
+  </div>
+
+<% end %>
