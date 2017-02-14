@@ -16,10 +16,10 @@
         <%= link_to( "/#{link.short_name}", edit_link_path(link.id) ) %>
       </td>
       <td>
-        <%= link_to( link.url, link.url )%>
+        <%= link_to( truncate(link.url), link.url, title: link.url )%>
       </td>
       <td>
-        <%= link.clicks %>
+        <%= number_with_delimiter link.clicks %>
       </td>
       <td>
         <%= link_to( "Edit", edit_link_path(link.id) ) %> |

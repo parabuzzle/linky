@@ -20,9 +20,9 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: 192.168.99.100
-  username: postgres
-  password: linky
+  host: <%= ENV.fetch("DB") {'localhost'} %>
+  username: <%= ENV.fetch("DB_USER") {'postgres'} %>
+  password: <%= ENV.fetch("DB_PASS") {'linky'} %>
 
 development:
   <<: *default
@@ -84,5 +84,3 @@ test:
 production:
   <<: *default
   database: linky_production
-  username: linky
-  password: <%= ENV['LINKY_DATABASE_PASSWORD'] %>

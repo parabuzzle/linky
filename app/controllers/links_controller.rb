@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     if params[:search]
-      @links = Link.where("short_name like ?", "%#{params[:search]}%").order(clicks: :desc).paginate(:page => params[:page], :per_page => 30)
+      @links = Link.where("short_name like ? or url like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(clicks: :desc).paginate(:page => params[:page], :per_page => 30)
     else
       @links = Link.all.order(clicks: :desc).paginate(:page => params[:page], :per_page => 30)
     end
@@ -19,6 +19,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    @link.short_name = params[:short_name] if params[:short_name]
   end
 
   # GET /links/1/edit

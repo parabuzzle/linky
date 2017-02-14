@@ -1,19 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Short name:</strong>
-  <%= @link.short_name %>
-</p>
+<div class="row">
+  <div class="col-md-3"><strong>Short Url:</strong></div>
+  <div class="col-md-9"><%= link_to( "#{root_url}#{@link.short_name}", "#{root_url}#{@link.short_name}" )%></div>
+</div>
 
-<p>
-  <strong>Url:</strong>
-  <%= @link.url %>
-</p>
+<div class="row">
+  <div class="col-md-3"><strong>Redirects to:</strong></div>
+  <div class="col-md-9"><%= link_to( truncate(@link.url), @link.url, title: @link.url )%></div>
+</div>
 
-<p>
-  <strong>Params url:</strong>
-  <%= @link.params_url %>
-</p>
+<div class="row">
+  <div class="col-md-3"><strong>When params are passed:</strong></div>
 
+  <% unless @link.params_url.blank? %>
+    <div class="col-md-9"><%= link_to( @link.params_url, @link.params_url ) %></div>
+  <% else %>
+    <div class="col-md-9">(nothing set)</div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-3"><strong>Visits:</strong></div>
+  <div class="col-md-9"><%= @link.clicks %></div>
+</div>
+
+<br/>
 <%= link_to 'Edit', edit_link_path(@link) %> |
 <%= link_to 'Back', root_path %>
