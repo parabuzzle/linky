@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
+  "http://github.com/#{repo_name}.git"
 end
 
 
@@ -39,7 +39,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'simple_form'
 
+gem 'font-awesome-rails', '~> 4.6.3.0'
 gem 'will_paginate', '~> 3.1.0'
+gem 'data-confirm-modal', '~> 1.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

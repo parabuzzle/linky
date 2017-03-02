@@ -7,23 +7,18 @@
     <th>Short Link</th>
     <th>Url</th>
     <th>Visits</th>
-    <th>Actions</th>
   </tr>
 
   <% @links.each do |link| %>
     <tr>
       <td>
-        <%= link_to( "/#{link.short_name}", edit_link_path(link.id) ) %>
+        <%= link_to( "/#{link.short_name}", link_path(link.id) ) %>
       </td>
       <td>
         <%= link_to( truncate(link.url), link.url, title: link.url )%>
       </td>
       <td>
         <%= number_with_delimiter link.clicks %>
-      </td>
-      <td>
-        <%= link_to( "Edit", edit_link_path(link.id) ) %> |
-        <%= link_to( "Delete", edit_link_path(link.id), method: :delete, data: {confirm: "Are you sure you want to delete this link?"} ) %>
       </td>
     </tr>
   <% end %>
