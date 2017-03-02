@@ -8,6 +8,7 @@ MAINTAINER Mike Heijmans <parabuzzle@gmail.com>
 # Add env variables
 ENV PORT 80
 ENV APP_HOME /webapp
+ENV RAILS_ENV production
 
 # switch to the application directory for exec commands
 WORKDIR $APP_HOME
@@ -19,5 +20,7 @@ RUN gem update bundler
 
 RUN bundle install
 
+RUN rake assets:precompile
+
 # Run the app
-CMD rails s -b 0.0.0.0 -p $PORT
+CMD SECRET_KEY_BASE=$(rake secret) rails s -b 0.0.0.0 -p $PORT

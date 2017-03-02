@@ -36,7 +36,12 @@ docker run -d -p 80:80 -e DB=your_database -e DB_USER=your_user -e DB_PASS=your_
   * DB = hostname for the database
   * DB_USER = the database username
   * DB_PASS = the database password
+  * SECRET_KEY_BASE = the session secret key
   * PORT = the application port to listen on
+  * RAILS_MAX_THREADS = number of threads per worker
+  * WEB_CONCURRENCY = number of puma workers
+  * FORCE_SSL = force to https
+  * LOG_LEVEL = log level to use
 
 ## Setup the Database
 
